@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace CPFT.CremulParser.Cremul
@@ -70,20 +71,15 @@ namespace CPFT.CremulParser.Cremul
                 }
             };
 
-        public enum RefTypes
-        {
-            INVOICE_NUMBER,
-            CREDIT_NOTE,
-            KID
-        }
+
 
 
         private static Dictionary<string, RefTypes> REF_TYPES = new Dictionary<string, RefTypes>
         {
-            {"c380", RefTypes.INVOICE_NUMBER},
-            {"c381", RefTypes.CREDIT_NOTE},
-            {"c999", RefTypes.KID},
-            {"c998", RefTypes.INVOICE_NUMBER}
+            {"380", RefTypes.INVOICE_NUMBER},
+            {"381", RefTypes.CREDIT_NOTE},
+            {"999", RefTypes.KID},
+            {"998", RefTypes.INVOICE_NUMBER}
         };
 
 /*    # Assumes that the parameter is a string with the code
@@ -137,7 +133,7 @@ namespace CPFT.CremulParser.Cremul
                     end_pos = segments.Length;
             }
             var reg = new Regex(regexPattern);
-            for (int i = start_pos; i <= end_pos; i++)
+            for (int i = start_pos; i < end_pos; i++)
             {
                 if (reg.IsMatch(segments[i]))
                     return i;
@@ -379,6 +375,11 @@ namespace CPFT.CremulParser.Cremul
             if (nextLineIndex > 0)
                 return nextLineIndex - 1;
             return cntIndex - 1;
+        }
+
+        public DateTime ParseCremulDate(string date)
+        {
+            return DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None);
         }
     }
 }

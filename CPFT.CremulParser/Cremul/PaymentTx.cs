@@ -20,7 +20,7 @@ namespace CPFT.CremulParser.Cremul
         //  # Party-id:
         //  # OR - Payor's bank account
         //  # I2 - Beneficiary's bank account
-        
+
         private const int REF_TYPE_KID = 999; // Norwegian customer invoice reference
         private const int REF_TYPE_INVOICE_NUMBER = 380;
         //
@@ -30,11 +30,13 @@ namespace CPFT.CremulParser.Cremul
         public int tx_index { get; set; }
         public string invoice_ref { get; set; }
         public string payer_account_number { get; set; }
-        public ParserHelper.RefTypes invoice_ref_type { get; set; }
+        public RefTypes invoice_ref_type { get; set; }
         public string free_text { get; set; }
         public Money money { get; set; }
         public NameAndAddress beneficiary_nad { get; set; }
         public NameAndAddress payer_nad { get; set; }
+        public List<Reference> references { get; set; }
+
 
 
 
@@ -42,13 +44,14 @@ namespace CPFT.CremulParser.Cremul
         {
             tx_index = txIndex; // the index number of this tx within it's parent line
             var s = segments[helper.next_date_segment_index(segments, txSegmentPos, -1)].Split(':');
-            posting_date = DateTime.Parse(s[1]);
+            posting_date = helper.ParseCremulDate(s[1]);
 
             s = segments[helper.next_fii_or_segment_index(segments, txSegmentPos, -1)].Split('+');
             if (s.Length >= 3) //# bank account number is provided)
             {
                 if (s[2].Contains(":"))
-                    payer_account_number = s[2].Split(':')[0]; // # the part after the : is the payer account holder name
+                    payer_account_number = s[2].Split(':')[0];
+                        // # the part after the : is the payer account holder name
                 else
                     payer_account_number = s[2];
             }
@@ -69,11 +72,12 @@ namespace CPFT.CremulParser.Cremul
             var nadIndex = helper.next_nad_segment_index(segments, txSegmentPos, -1);
             while (nadIndex >= 0 && nadIndex <= n)
             {
-              var  nad = new NameAndAddress(segments[nadIndex]);
+                var nad = new NameAndAddress(segments[nadIndex]);
                 assign_nad(nad);
                 nadIndex = helper.next_nad_segment_index(segments, nadIndex + 1, -1);
             }
         }
+
         //TODO: need refactor to enum
         private void assign_nad(NameAndAddress nad)
         {
@@ -90,7 +94,7 @@ namespace CPFT.CremulParser.Cremul
 
         private void init_refs(string[] segments, int txSegmentPos, ParserHelper helper)
         {
-            var references = new List<Reference>();
+            references = new List<Reference>();
             var n = helper.number_of_references_in_tx(segments, txSegmentPos);
             var refSegmentIndex = helper.next_ref_segment_index(segments, txSegmentPos, -1);
             for (int i = 0; i < n; i++)
@@ -115,10 +119,9 @@ namespace CPFT.CremulParser.Cremul
             {
                 var s = segments[helper.doc_segment_index(segments, txSegmentPos, -1)].Split('+');
                 invoice_ref_type = helper.ref_type(s[1]);
-                invoice_ref = s[2];
+                if (s.Length > 2)
+                    invoice_ref = s[2];
             }
         }
-
-
     }
 }

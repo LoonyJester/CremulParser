@@ -26,7 +26,7 @@ namespace CPFT.CremulParser
             messages = new List<Message>();
         }
 
-        public bool parse(string filePath, string file_encoding = "utf-8")
+        public bool parse(string filePath)
         {
             if(!File.Exists(filePath)) return false;
             var segments = GetSegments(filePath);
@@ -41,7 +41,7 @@ namespace CPFT.CremulParser
                         sub = segments.Skip(m[i]).Take(segments.Length - m[i]).ToArray();
                     else
                         sub =segments.Skip(m[i]).Take(m[i+1] - m[i]).ToArray();
-                   messages.Add(new Message(i, sub, _helper)); 
+                   messages.Add(new Message(i+1, sub, _helper)); 
                 }
                 return true;
             }

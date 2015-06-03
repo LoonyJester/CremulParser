@@ -38,8 +38,8 @@ namespace CPFT.CremulParser.Cremul
             }
             else
             {
-                for (var i = 0; i < 5; i++)
-                    nad_lines.Add(s[i + 4]);
+                for (var i = 4; i < s.Length; i++)
+                    nad_lines.Add(s[i]);
             }
         }
     }

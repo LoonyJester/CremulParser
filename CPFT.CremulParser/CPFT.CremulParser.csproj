@@ -48,7 +48,8 @@
     </Compile>
     <Compile Include="Cremul\PaymentTx.cs" />
     <Compile Include="Cremul\Reference.cs" />
-    <Compile Include="Parser.cs" />
+    <Compile Include="CremulParser.cs" />
+    <Compile Include="Cremul\RefTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

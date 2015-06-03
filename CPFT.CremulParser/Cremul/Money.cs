@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace CPFT.CremulParser.Cremul
 {
     public class Money
@@ -10,7 +12,7 @@ namespace CPFT.CremulParser.Cremul
         {
             var m = moneySegment.Split(':');
             var a = m[1].Replace(',', '.'); // # , is used as decimal mark
-            amount = decimal.Parse(a);
+            amount = decimal.Parse(a, CultureInfo.InvariantCulture);
             currency = m.Length >= 3 ? m[2] : DefaultCurrency;
         }
     }

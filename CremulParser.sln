@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPFT.CremulParser", "CPFT.CremulParser\CPFT.CremulParser.csproj", "{9B7D5600-784C-4485-8BA3-2B035930085A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{4EBDCEC7-D135-4501-98B9-C92A76D0F5AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9B7D5600-784C-4485-8BA3-2B035930085A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B7D5600-784C-4485-8BA3-2B035930085A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B7D5600-784C-4485-8BA3-2B035930085A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EBDCEC7-D135-4501-98B9-C92A76D0F5AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EBDCEC7-D135-4501-98B9-C92A76D0F5AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EBDCEC7-D135-4501-98B9-C92A76D0F5AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EBDCEC7-D135-4501-98B9-C92A76D0F5AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

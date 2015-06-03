@@ -27,7 +27,8 @@ namespace CPFT.CremulParser.Cremul
         public Reference(string refSegment)
         {
             var s = refSegment.Split(':');
-            number = s[1];
+            if (s.Length > 1)
+                number = s[1];
             s = s[0].Split('+');
             type = s[1];
         }

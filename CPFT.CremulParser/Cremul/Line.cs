@@ -22,7 +22,7 @@ namespace CPFT.CremulParser.Cremul
 
             line_index = lineIndex;
             var d = segments[helper.next_date_segment_index(segments, lineSegmentPos, -1)].Split(':');
-            posting_date = DateTime.Parse(d[1]);
+            posting_date = helper.ParseCremulDate(d[1]);
 
             reference = new Reference(segments[helper.next_ref_segment_index(segments, lineSegmentPos, -1)]);
             money = new Money(segments[helper.next_amount_segment_index(segments, lineSegmentPos, -1)]);

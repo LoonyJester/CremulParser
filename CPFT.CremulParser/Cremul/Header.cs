@@ -33,7 +33,7 @@ namespace CPFT.CremulParser.Cremul
             msg_id = segments[helper.msg_id_segment_index(segments)];
 
             var d = segments[helper.next_date_segment_index(segments, 0, -1)].Split(':');
-            created_date = DateTime.Parse(d[1]);
+            created_date = helper.ParseCremulDate(d[1]);
 
             var bfNadIndex = helper.next_nad_segment_index(segments, 0, -1); // may not be present in the header
             if (bfNadIndex >= 0)
