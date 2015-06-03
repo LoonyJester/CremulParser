@@ -1,9 +1,9 @@
 // A file may contain one or more Cremul messages. A Cremul message consists of 'message segments'.
 //Each segment starts with a Cremul keyword. A group of segments make up a logical element of the
-//# Cremul message. The overall logical structure of a Cremul message is as follows:
-//#
-//# [ Cremul message ] 1 --- * [ Line ] 1 --- * [ Payment TX ]
-//#
+// Cremul message. The overall logical structure of a Cremul message is as follows:
+//
+// [ Cremul message ] 1 --- * [ Line ] 1 --- * [ Payment TX ]
+//
 
 using System.Collections.Generic;
 using System.IO;
@@ -18,15 +18,15 @@ namespace CPFT.CremulParser
         private readonly ParserHelper _helper;
 
         
-        public List<Message> messages { get; set; }
+        public List<Message> Messages { get; set; }
 
         public CremulParser()
         {
             _helper = new ParserHelper();
-            messages = new List<Message>();
+            Messages = new List<Message>();
         }
 
-        public bool parse(string filePath)
+        public bool Parse(string filePath)
         {
             if(!File.Exists(filePath)) return false;
             var segments = GetSegments(filePath);
@@ -41,7 +41,7 @@ namespace CPFT.CremulParser
                         sub = segments.Skip(m[i]).Take(segments.Length - m[i]).ToArray();
                     else
                         sub =segments.Skip(m[i]).Take(m[i+1] - m[i]).ToArray();
-                   messages.Add(new Message(i+1, sub, _helper)); 
+                   Messages.Add(new Message(i+1, sub, _helper)); 
                 }
                 return true;
             }

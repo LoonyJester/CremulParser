@@ -56,24 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Files\convert_files_to_utf8.sh">
+    <Content Include="Files\CREMUL0001.DAT">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\CREMUL0001-27.05.14.DAT">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\CREMUL0001_1.DAT">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\CREMUL0002-27.05.14.DAT">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\CREMUL0002.DAT">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\CREMUL0003.DAT">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Files\CREMUL0002.DAT" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
@@ -85,9 +71,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Files\CREMUL0001.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\CREMUL0002-utf-8.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\CREMUL0003.txt">

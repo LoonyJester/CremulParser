@@ -2,8 +2,8 @@
 {
     public enum RefTypes
     {
-        INVOICE_NUMBER,
-        CREDIT_NOTE,
-        KID
+        InvoiceNumber,
+        CreditNote,
+        Kid
     }
 }
